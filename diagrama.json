@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Joel Estheban Avendano Murillo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -86.4,
+      "left": -33.56,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 16.4,
+      "left": -256.4,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "board-mfrc522", "id": "rfid1", "top": -41.05, "left": 137.84, "attrs": {} },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -386, "left": -301.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "servo1:V+", "red", [ "h-47.85", "v-38.4" ] ],
+    [ "esp:GND.1", "servo1:GND", "black", [ "h-47.85", "v19.2" ] ],
+    [ "esp:13", "servo1:PWM", "green", [ "h-47.85", "v-9.6" ] ],
+    [ "esp:5", "rfid1:SDA", "green", [ "h48", "v-28.8" ] ],
+    [ "esp:18", "rfid1:SCK", "#8f4814", [ "h48", "v-9.6" ] ],
+    [ "esp:23", "rfid1:MOSI", "orange", [ "h48", "v67.2" ] ],
+    [ "esp:19", "rfid1:MISO", "gold", [ "h48", "v19.2" ] ],
+    [ "esp:GND.3", "rfid1:GND", "black", [ "h48", "v48" ] ],
+    [ "esp:22", "rfid1:RST", "blue", [ "h48", "v96" ] ],
+    [ "esp:3V3", "rfid1:3.3V", "red", [ "h-9.45", "v-38.4", "h153.6", "v163.2" ] ],
+    [ "keypad1:R1", "esp:12", "green", [ "v38.4", "h124.8", "v67.2" ] ],
+    [ "keypad1:R2", "esp:14", "#8f4814", [ "v38.4", "h114.8", "v57.6" ] ],
+    [ "keypad1:R3", "esp:27", "orange", [ "v38.4", "h105.3", "v48" ] ],
+    [ "keypad1:R4", "esp:32", "blue", [ "v38.4", "h95.8", "v19.2" ] ],
+    [ "keypad1:C1", "esp:25", "violet", [ "v38.4", "h86.3", "v28.8" ] ],
+    [ "keypad1:C2", "esp:26", "gray", [ "v38.4", "h76.8", "v38.4" ] ],
+    [ "keypad1:C3", "esp:33", "white", [ "v38.4", "h67.05", "v19.2" ] ],
+    [ "esp:2", "keypad1:C4", "gold", [ "h9.6", "v57.6", "h-153.6", "v-144", "h-57.3" ] ]
+  ],
+  "dependencies": {}
+}
