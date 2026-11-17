@@ -1,10 +1,12 @@
 import flet as ft
+from estilos import *
 
 
 def main(page: ft.Page):
     # Configuración de ventana o frame
     page.window.width = 1200
     page.window.height = 720
+    page.bgcolor = FONDO
     page.window.min_height = 600
     page.window.min_width = 900
     page.title = "Cerradura Inteligente - Panel de Control"
@@ -13,14 +15,16 @@ def main(page: ft.Page):
     # 1. Barra lateral
     barra_lateral = ft.Container(
         width=260,
+        bgcolor=PANEL,
         padding=20,
+        border_radius=15,
         content=ft.Column(
             spacing=15,
             controls=[
-                ft.Text("Menú de Control", size=20, weight=ft.FontWeight.BOLD),
+                ft.Text("Menú de Control", size=20, weight=ft.FontWeight.BOLD, color=TEXTO),
                 ft.Divider(),
-                ft.Text("Estado del Sistema: Conectado"),
-                ft.Text("Modo: MQTT / Local"),
+                ft.Text("Estado del Sistema: Conectado", color=VERDE),
+                ft.Text("Modo: MQTT / Local", color=TEXTO_SEC),
             ],
         ),
     )
@@ -50,10 +54,12 @@ def main(page: ft.Page):
         "Panel de Control de Cerradura",
         size=30,
         weight=ft.FontWeight.BOLD,
+        color=TEXTO,
     )
     subtitulo = ft.Text(
         "Supervisión de accesos y control remoto por MQTT",
         size=13,
+        color=TEXTO_SEC,
     )
 
     encabezado = ft.Column(spacing=3, controls=[titulo, subtitulo])
@@ -65,50 +71,79 @@ def main(page: ft.Page):
         "Estado actual: CERRADA",
         size=22,
         weight=ft.FontWeight.BOLD,
+        color=ROJO,
     )
     lbl_ultimo_evento = ft.Text(
         "Último evento: Ninguno registrado",
         size=16,
+        color=TEXTO_SEC,
     )
 
-    seccion_estado = ft.Column(
-        spacing=10,
-        controls=[
-            lbl_estado_puerta,
-            lbl_ultimo_evento,
-        ],
+    seccion_estado = ft.Container(
+        bgcolor=PANEL,
+        padding=20,
+        border_radius=15,
+        content=ft.Column(
+            spacing=10,
+            controls=[
+                lbl_estado_puerta,
+                lbl_ultimo_evento,
+            ],
+        ),
     )
     dashboard.controls.append(seccion_estado)
-    dashboard.controls.append(ft.Divider())
 
-    # 5. Botones de control (Sintaxis actual: ft.Button)
-    btn_abrir = ft.Button("ABRIR PUERTA")
-    btn_cerrar = ft.Button("CERRAR PUERTA")
+    # 5. Botones de control
+    btn_abrir = ft.Button(
+        "ABRIR PUERTA",
+        style=ft.ButtonStyle(
+            bgcolor=VERDE,
+            color=TEXTO,
+        ),
+    )
+    btn_cerrar = ft.Button(
+        "CERRAR PUERTA",
+        style=ft.ButtonStyle(
+            bgcolor=ROJO,
+            color=TEXTO,
+        ),
+    )
 
-    contenedor_botones = ft.Row(
-        spacing=20,
-        controls=[btn_abrir, btn_cerrar],
+    contenedor_botones = ft.Container(
+        bgcolor=PANEL,
+        padding=20,
+        border_radius=15,
+        content=ft.Row(
+            spacing=20,
+            controls=[btn_abrir, btn_cerrar],
+        ),
     )
     dashboard.controls.append(contenedor_botones)
-    dashboard.controls.append(ft.Divider())
 
-    # 6. Sección de registro de actividad (Logs)
+    # 6. Sección de registro de actividad
     titulo_logs = ft.Text(
         "Registro de Actividad",
         size=18,
-        weight=ft.FontWeight.BOLD,
+        weight=ft.FontWeight.BOLD
     )
     lbl_logs = ft.Text(
         "Esperando eventos de teclado, RFID o MQTT",
         size=14,
+        color=TEXTO_SEC,
     )
 
-    seccion_logs = ft.Column(
-        spacing=10,
-        controls=[
-            titulo_logs,
-            lbl_logs,
-        ],
+    seccion_logs = ft.Container(
+        bgcolor = PANEL,
+        padding=20,
+        border_radius=15,
+        content=ft.Column(
+            spacing=10,
+            controls=[
+                titulo_logs,
+                ft.Divider(),
+                lbl_logs,
+            ],
+        ),
     )
     dashboard.controls.append(seccion_logs)
 

@@ -1,0 +1,10 @@
+import flet as ft
+PANEL = "#4F4E4D"
+FONDO = "#242423"
+VERDE = "#9BDF57"
+CONSOLA = "#090D16"
+
+TEXTO = ft.Colors.WHITE
+TEXTO_SEC = "#94A3B8"
+
+ROJO = "#FF0E00"
