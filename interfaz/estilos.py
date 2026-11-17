@@ -2,9 +2,9 @@ import flet as ft
 PANEL = "#4F4E4D"
 FONDO = "#242423"
 VERDE = "#9BDF57"
-CONSOLA = "#090D16"
+BORDE = "#6B6A68"
 
 TEXTO = ft.Colors.WHITE
-TEXTO_SEC = "#94A3B8"
+TEXTO_SEC = "#D8FCBD"
 
 ROJO = "#FF0E00"
