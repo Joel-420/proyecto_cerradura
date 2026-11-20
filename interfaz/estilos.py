@@ -1,5 +1,6 @@
 import flet as ft
 PANEL = "#4F4E4D"
+PANEL_2 = "#3A3938"
 FONDO = "#242423"
 VERDE = "#9BDF57"
 BORDE = "#6B6A68"
@@ -8,3 +9,4 @@ TEXTO = ft.Colors.WHITE
 TEXTO_SEC = "#D8FCBD"
 
 ROJO = "#FF0E00"
+AMARILLO = ft.Colors.AMBER_400
